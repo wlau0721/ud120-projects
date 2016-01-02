@@ -59,9 +59,20 @@ poi, finance_features = targetFeatureSplit( data )
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
+
+##scaler = MinMaxScaler() 	#for lesson 9 feature scaling
+salary = []					#for lesson 9 feature scaling
+stock = []					#for lesson 9 feature scaling
 for f1, f2, f3 in finance_features:
-    plt.scatter( f1, f2, f3 )
+	plt.scatter( f1, f2, f3 )
+	salary.append(float(f1))
+	stock.append(float(f2))
 plt.show()
+
+print "salary", salary		#for lesson 9 feature scaling
+print "stock", stock		#for lesson 9 feature scaling
+print "$200000 salary rescaled: ", (200000 - min(salary))/(float(max(salary) - min(salary)))	#for lesson 9 feature scaling
+print "$1m stock options rescaled: ", (1000000 - min(stock))/(float(max(stock) - min(stock)))	#for lesson 9 feature scaling
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
